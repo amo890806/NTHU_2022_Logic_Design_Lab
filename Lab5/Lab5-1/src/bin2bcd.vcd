@@ -1,0 +1,50 @@
+$date
+	Thu Jun 30 14:04:54 2022
+$end
+$version
+	Icarus Verilog
+$end
+$timescale
+	10ps
+$end
+$scope module tb_bin2bcd $end
+$var wire 4 ! tens_BCD [3:0] $end
+$var wire 4 " digits_BCD [3:0] $end
+$var reg 6 # binary [5:0] $end
+$scope module bb1 $end
+$var wire 6 $ binary [5:0] $end
+$var wire 4 % tens_BCD [3:0] $end
+$var wire 4 & digits_BCD [3:0] $end
+$var reg 8 ' BCD [7:0] $end
+$var integer 32 ( i [31:0] $end
+$upscope $end
+$upscope $end
+$enddefinitions $end
+#0
+$dumpvars
+b110 (
+b1000000 '
+b0 &
+b100 %
+b101000 $
+b101000 #
+b0 "
+b100 !
+$end
+#1000
+b1001 "
+b1001 &
+b11 !
+b11 %
+b110 (
+b111001 '
+b100111 #
+b100111 $
+#2000
+b1000 "
+b1000 &
+b110 (
+b111000 '
+b100110 #
+b100110 $
+#3000
