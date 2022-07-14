@@ -7,9 +7,7 @@ module mem_addr_gen (
     input [9:0] h_cnt,
     input [9:0] v_cnt,
     input [2:0] random,
-    output reg [12:0] pixel_addr,
-    output [2:0] random_led,
-    output [4:0] cnt_led
+    output reg [12:0] pixel_addr
 );
 
 integer i, j;
@@ -19,9 +17,6 @@ reg [4:0] step_cnt;
 reg [2:0] random_reg;
 //x: 0=>H_CENTER ~ H_CENTER+24 ; 1=>H_CENTER+24 ~ H_CENTER+48 ; 2=>H_CENTER+48 ~ H_CENTER+72 3=>H_CENTER+72 ~ H_CENTER+96 ;
 //y: 0=>0~24 ; 1=>24~48, ..., 19=>456~480
-
-assign random_led = random_reg;
-assign cnt_led = step_cnt;
 
 reg pause_en, pause_en_dly;
 always @(*) begin

@@ -5,8 +5,7 @@ module tetris_element_generator (
     output [3:0] vgaGreen,
     output [3:0] vgaBlue,
     output Hsync,
-    output Vsync,
-    output [7:0] led
+    output Vsync
 );
 
 wire clk_1Hz, clk_10Hz, clk_100Hz, clk_2kHz;
@@ -19,10 +18,6 @@ wire valid;
 wire [9:0] h_cnt; //640
 wire [9:0] v_cnt;  //480
 wire [2:0] random;
-wire [2:0] random_led;
-wire [4:0] cnt_led;
-
-assign led = {random_led, cnt_led};
 
 frequency_divider fd1(
     .clk(clk),
@@ -61,9 +56,7 @@ mem_addr_gen mag1(
     .h_cnt(h_cnt),
     .v_cnt(v_cnt),
     .random(random),
-    .pixel_addr(pixel_addr),
-    .random_led(random_led),
-    .cnt_led(cnt_led)
+    .pixel_addr(pixel_addr)
 );
 
 blk_mem_gen_0 bmg1(
