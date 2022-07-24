@@ -7,32 +7,24 @@ module stopwatch (
     output [8:0] stw_min_binary
 );
 
-wire timeup;
-assign timeup = (stw_sec_binary == 0) && (stw_min_binary==0);
+wire carry;
 
-wire sec_count_en;
-assign sec_count_en = stw_count_en & (!timeup);
-
-wire sec_borrow, min_borrow;
-
-downcounter sec(
+second_counter sc1(
     .clk(clk),
     .rst_n(rst_n),
-    .count_en(sec_count_en),
+    .count_en(stw_count_en),
     .reset_en(stw_reset_en),
-    .init(9'd59),
-    .binary(stw_sec_binary),
-    .time_borrow(sec_borrow)
-);
-
-downcounter min(
-    .clk(clk),
-    .rst_n(rst_n),
-    .count_en(sec_borrow),
-    .reset_en(stw_reset_en),
-    .init(9'd59),
-    .binary(stw_min_binary),
-    .time_borrow(min_borrow)
+    .carry(carry),
+    .binary(stw_sec_binary)
 );
     
+minute_counter mc1(
+    .clk(clk),
+    .rst_n(rst_n),
+    .count_en(stw_count_en),
+    .reset_en(stw_reset_en),
+    .carry(carry),
+    .binary(stw_min_binary)
+);
+
 endmodule

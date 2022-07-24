@@ -194,8 +194,8 @@ stopwatch w1(
     .rst_n(rst_n),
     .stw_count_en(stw_count_en),
     .stw_reset_en(btn[2]),
-    .stw_sec_binary(stw_sec_binary),
-    .stw_min_binary(stw_min_binary)
+    .stw_min_binary(stw_min_binary),
+    .stw_sec_binary(stw_sec_binary)
 );
 
 unitset u1(
